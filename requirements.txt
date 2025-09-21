@@ -4,9 +4,11 @@
 # Core Google Cloud libraries
 google-cloud-bigquery>=3.11.0
 google-cloud-storage>=2.10.0
+bigframes>=0.10.0
+
+# Optional Google Cloud libraries (with fallback support)
 google-cloud-vision>=3.4.0
 google-cloud-documentai>=2.20.0
-bigframes>=0.10.0
 
 # Additional Google Cloud libraries for full functionality
 google-cloud-core>=2.4.0

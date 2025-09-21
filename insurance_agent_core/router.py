@@ -1,6 +1,6 @@
 """
 BigQuery AI Hackathon: Intelligent Insurance Engine
-LLM Router for Intelligent Tool Selection
+LLM Router for Intelligent Tool Selection with Gemini 2.5 Flash Lite
 State-of-the-Art Agent Decision Making
 """
 
@@ -8,9 +8,18 @@ from typing import Dict, Any, List, Optional
 import json
 import logging
 from datetime import datetime
+import os
+import asyncio
 
-# For now, we'll use a simple rule-based router
-# In production, this would integrate with Gemini or other LLMs
+# Import Gemini for intelligent routing
+try:
+    import google.generativeai as genai
+    from google.generativeai.types import HarmCategory, HarmBlockThreshold
+    GEMINI_AVAILABLE = True
+except ImportError:
+    GEMINI_AVAILABLE = False
+    print("⚠️ Gemini API not available, using fallback router")
+
 log = logging.getLogger(__name__)
 
 class ApplicationState:
