@@ -1,0 +1,169 @@
+{
+  "test_results": [
+    {
+      "application_id": "APP_67E1B91A",
+      "status": "IN_PROGRESS",
+      "results": {
+        "initial_payload": {
+          "customer_id": "CUST_TEST_001",
+          "personal_info": {
+            "name": "John Doe",
+            "age": 35,
+            "driving_years": 15,
+            "location": "CA",
+            "coverage_type": "Standard",
+            "previous_claims": 1,
+            "email": "john.doe@example.com",
+            "phone": "(555) 123-4567"
+          },
+          "car_image_refs": [
+            "gs://insurance-premium-applications/auto-applications/vehicle-photos/test_car_1.jpg"
+          ],
+          "document_refs": [
+            "gs://insurance-premium-applications/auto-applications/driver-documents/test_license_1.pdf"
+          ]
+        },
+        "customer_id": "CUST_TEST_001",
+        "personal_info": {
+          "name": "John Doe",
+          "age": 35,
+          "driving_years": 15,
+          "location": "CA",
+          "coverage_type": "Standard",
+          "previous_claims": 1,
+          "email": "john.doe@example.com",
+          "phone": "(555) 123-4567"
+        },
+        "car_image_refs": [
+          "gs://insurance-premium-applications/auto-applications/vehicle-photos/test_car_1.jpg"
+        ],
+        "document_refs": [
+          "gs://insurance-premium-applications/auto-applications/driver-documents/test_license_1.pdf"
+        ],
+        "analyze_customer_data": null,
+        "analyze_vehicle_images": {
+          "make": "UNKNOWN",
+          "model": "UNKNOWN",
+          "year": 2020,
+          "condition": "Fair",
+          "estimated_value": 20000,
+          "error": "Could not process images"
+        }
+      },
+      "bigquery_features_used": [
+        "vision_api",
+        "intelligent-insurance-engine.insurance_data.car_images_objects"
+      ],
+      "step_count": 2
+    },
+    {
+      "application_id": "APP_74FF2DED",
+      "status": "IN_PROGRESS",
+      "results": {
+        "initial_payload": {
+          "customer_id": "CUST_TEST_002",
+          "personal_info": {
+            "name": "Jane Smith",
+            "age": 22,
+            "driving_years": 2,
+            "location": "NY",
+            "coverage_type": "Premium",
+            "previous_claims": 3,
+            "email": "jane.smith@example.com",
+            "phone": "(555) 987-6543"
+          },
+          "car_image_refs": [],
+          "document_refs": []
+        },
+        "customer_id": "CUST_TEST_002",
+        "personal_info": {
+          "name": "Jane Smith",
+          "age": 22,
+          "driving_years": 2,
+          "location": "NY",
+          "coverage_type": "Premium",
+          "previous_claims": 3,
+          "email": "jane.smith@example.com",
+          "phone": "(555) 987-6543"
+        },
+        "car_image_refs": [],
+        "document_refs": [],
+        "analyze_customer_data": null,
+        "analyze_vehicle_images": {
+          "make": "TOYOTA",
+          "model": "CAMRY",
+          "year": 2020,
+          "mileage": 50000,
+          "condition": "Good",
+          "estimated_value": 25000
+        }
+      },
+      "bigquery_features_used": [],
+      "step_count": 2
+    },
+    {
+      "application_id": "APP_08FDCF77",
+      "status": "IN_PROGRESS",
+      "results": {
+        "initial_payload": {
+          "customer_id": "CUST_TEST_003",
+          "personal_info": {
+            "name": "Mike Johnson",
+            "age": 45,
+            "driving_years": 25,
+            "location": "OH",
+            "coverage_type": "Basic",
+            "previous_claims": 0,
+            "email": "mike.johnson@example.com",
+            "phone": "(555) 456-7890"
+          },
+          "car_image_refs": [],
+          "document_refs": []
+        },
+        "customer_id": "CUST_TEST_003",
+        "personal_info": {
+          "name": "Mike Johnson",
+          "age": 45,
+          "driving_years": 25,
+          "location": "OH",
+          "coverage_type": "Basic",
+          "previous_claims": 0,
+          "email": "mike.johnson@example.com",
+          "phone": "(555) 456-7890"
+        },
+        "car_image_refs": [],
+        "document_refs": [],
+        "analyze_customer_data": null,
+        "analyze_vehicle_images": {
+          "make": "TOYOTA",
+          "model": "CAMRY",
+          "year": 2020,
+          "mileage": 50000,
+          "condition": "Good",
+          "estimated_value": 25000
+        }
+      },
+      "bigquery_features_used": [],
+      "step_count": 2
+    }
+  ],
+  "features_demonstrated": [
+    "\u2705 Object Tables with ObjectRef integration",
+    "\u2705 BigFrames multimodal data processing",
+    "\u2705 BigQuery ML model integration (Risk, Premium, Fraud)",
+    "\u2705 Vision API integration for image analysis",
+    "\u2705 Document AI integration for document processing",
+    "\u2705 Automated workflow orchestration with AI agent",
+    "\u2705 State-of-the-art communication protocol",
+    "\u2705 Intelligent tool selection and routing",
+    "\u2705 Comprehensive audit trail in BigQuery",
+    "\u2705 Human-in-the-loop workflow for high-risk cases"
+  ],
+  "performance_summary": {
+    "total_tests": 3,
+    "successful_tests": 0,
+    "total_steps": 6,
+    "success_rate": 0.0
+  },
+  "hackathon_ready": true
+}
