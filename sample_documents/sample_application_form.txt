@@ -1,0 +1,5 @@
+Insurance Application Form
+Applicant: John Doe
+Coverage Type: Comprehensive
+Vehicle Year: 2020
+Vehicle Make: Toyota

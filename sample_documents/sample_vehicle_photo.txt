@@ -1,0 +1,4 @@
+This is a sample vehicle photo document.
+Vehicle: Toyota Camry 2020
+License Plate: ABC123
+Condition: Good

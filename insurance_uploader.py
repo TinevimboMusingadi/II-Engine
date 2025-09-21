@@ -302,9 +302,9 @@ class InsuranceApplicationUploader:
             
             # Add timestamps
             current_time = datetime.utcnow()
-            application_data["created_at"] = current_time
-            application_data["updated_at"] = current_time
-            application_data["application_date"] = current_time
+            application_data["created_at"] = current_time.isoformat()
+            application_data["updated_at"] = current_time.isoformat()
+            application_data["application_date"] = current_time.isoformat()
             
             # Insert the record
             rows_to_insert = [application_data]
@@ -390,8 +390,8 @@ class InsuranceApplicationUploader:
             "customer_id": customer_id,
             "application_type": application_type,
             "status": "pending",
-            "documents_refs": documents_refs,  # ObjectRef data
-            "ai_extractions": ai_extractions,  # AI processing results
+            "documents_refs": json.dumps(documents_refs),  # ObjectRef data as JSON
+            "ai_extractions": json.dumps(ai_extractions),  # AI processing results as JSON
             "risk_score": None,  # To be calculated by ML model
             "premium_quoted": None,  # To be calculated by pricing model
             "fraud_probability": None,  # To be calculated by fraud detection
@@ -418,9 +418,9 @@ class InsuranceApplicationUploader:
         try:
             customer_data = {
                 "customer_id": customer_id,
-                "personal_info": customer_info,
-                "created_timestamp": datetime.utcnow(),
-                "last_updated": datetime.utcnow(),
+                "personal_info": json.dumps(customer_info),
+                "created_timestamp": datetime.utcnow().isoformat(),
+                "last_updated": datetime.utcnow().isoformat(),
                 "processing_status": "ACTIVE"
             }
             
