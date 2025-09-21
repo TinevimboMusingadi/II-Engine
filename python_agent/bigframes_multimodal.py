@@ -72,7 +72,7 @@ class BigFramesMultimodalProcessor:
                     uri as image_uri,
                     content_type,
                     size as file_size,
-                    last_modified
+                    updated_time as last_modified
                 )
             ) as car_images
         FROM `{self.project_id}.{self.dataset_id}.car_images_objects`

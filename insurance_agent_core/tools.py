@@ -308,15 +308,25 @@ class BigQueryAIToolImplementations:
             log.info(f"📝 Generating comprehensive final report")
             
             # Create detailed report content
-            customer_data = customer_analysis.get("structured_data", {})
+            customer_data = {}
+            if customer_analysis and isinstance(customer_analysis, dict):
+                customer_data = customer_analysis.get("structured_data", {})
+                if not customer_data:
+                    customer_data = customer_analysis.get("data", {})
+                    if isinstance(customer_data, dict):
+                        customer_data = customer_data.get("structured_data", {})
+            
+            # Ensure customer_data is a dict
+            if not isinstance(customer_data, dict):
+                customer_data = {}
             
             report_sections = {
                 "executive_summary": f"""
                 EXECUTIVE SUMMARY
                 =================
                 Application processed for {customer_data.get('name', 'N/A')}, age {customer_data.get('age', 'N/A')}.
-                Risk Score: {risk_assessment.get('final_risk_score', 'N/A')}/100
-                Annual Premium: ${risk_assessment.get('premium_amount', 'N/A'):.2f}
+                Risk Score: {risk_assessment.get('final_risk_score', 0)}/100
+                Annual Premium: ${risk_assessment.get('premium_amount', 0):.2f}
                 Risk Category: {risk_assessment.get('risk_category', 'N/A')}
                 """,
                 

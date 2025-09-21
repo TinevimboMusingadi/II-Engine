@@ -5,7 +5,7 @@ Phase 2: AI Agent Core Development
 """
 
 import bigframes.pandas as bpd
-from typing import Dict, Any, Optional, Union
+from typing import Dict, Any, Optional, Union, List
 import json
 import numpy as np
 from datetime import datetime
@@ -73,21 +73,18 @@ class InsuranceMLTools:
 
         # Use BigQuery ML for prediction
         query = f"""
-        CREATE OR REPLACE TABLE `{self.project_id}.{temp_table}` AS
-        SELECT * FROM UNNEST([{json.dumps(prediction_data)}]);
-
+        WITH prediction_input AS (
+            SELECT
+                {prediction_data['age']} as age,
+                {prediction_data['driving_years']} as driving_years,
+                {prediction_data['location_risk_factor']} as location_risk_factor,
+                {prediction_data['car_value']} as car_value,
+                {prediction_data['previous_claims']} as previous_claims
+        )
         SELECT
             ML.PREDICT(
                 MODEL `{self.project_id}.{self.dataset_id}.risk_scoring_model`,
-                (
-                    SELECT
-                        age,
-                        driving_years,
-                        location_risk_factor,
-                        car_value,
-                        previous_claims
-                    FROM `{self.project_id}.{temp_table}`
-                )
+                (SELECT * FROM prediction_input)
             ) as predictions
         """
 
@@ -188,21 +185,18 @@ class InsuranceMLTools:
 
         # Use BigQuery ML for anomaly detection
         query = f"""
-        CREATE OR REPLACE TABLE `{self.project_id}.{temp_table}` AS
-        SELECT * FROM UNNEST([{json.dumps(detection_data)}]);
-
+        WITH fraud_input AS (
+            SELECT
+                {detection_data['claim_amount']} as claim_amount,
+                {detection_data['time_to_claim_hours']} as time_to_claim_hours,
+                {detection_data['previous_claims_count']} as previous_claims_count,
+                {detection_data['risk_score']} as risk_score,
+                {detection_data['documentation_score']} as documentation_score
+        )
         SELECT
             ML.DETECT_ANOMALIES(
                 MODEL `{self.project_id}.{self.dataset_id}.fraud_detection_model`,
-                (
-                    SELECT
-                        claim_amount,
-                        time_to_claim_hours,
-                        previous_claims_count,
-                        risk_score,
-                        documentation_score
-                    FROM `{self.project_id}.{temp_table}`
-                )
+                (SELECT * FROM fraud_input)
             ) as anomalies
         """
 
@@ -419,7 +413,7 @@ if __name__ == "__main__":
 
     # Calculate premium
     premium = ml_tools.premium_calculation_tool(risk_score, 'Standard', 25000, 'CA')
-    print(f"Premium Amount: ${premium".2f"}")
+    print(f"Premium Amount: ${premium:.2f}")
 
     # Comprehensive assessment
     assessment = ml_tools.comprehensive_risk_assessment(customer_data, vehicle_data)

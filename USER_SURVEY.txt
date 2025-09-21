@@ -1,0 +1,120 @@
+BigQuery AI Hackathon - User Survey
+Submission: Intelligent Insurance Engine
+Team: Solo Developer
+Date: September 21, 2025
+
+=== SURVEY RESPONSES ===
+
+1. Please tell us how many months of experience with BigQuery AI each team member has.
+
+Team Member 1 (Solo Developer): 2 months
+- Started exploring BigQuery AI features in July 2025
+- Discovered the hackathon 2 days after beginning work on the insurance project
+- Intensive learning during the 2-month development period
+- Focused specifically on multimodal capabilities (Object Tables, ObjectRef, BigFrames)
+- Hands-on experience with ML.PREDICT, ML.DETECT_ANOMALIES, Vision API integration
+- Self-taught through documentation, sample notebooks, and experimentation
+
+2. Please tell us how many months of experience with Google Cloud each team member has.
+
+Team Member 1 (Solo Developer): 8 months
+- Started with basic Google Cloud services in January 2025
+- Experience with Cloud Storage, BigQuery (traditional), and basic ML services
+- Expanded to advanced BigQuery AI features in the last 2 months
+- Comfortable with service account management, IAM, and resource provisioning
+- Experience with Cloud Vision API, Document AI, and related AI services
+- Developed expertise in BigQuery ML and BigFrames during this project
+
+3. We'd love to hear from you and your experience in working with the technology during this hackathon, positive or negative. Please provide any feedback on your experience with BigQuery AI.
+
+=== POSITIVE EXPERIENCES ===
+
+Multimodal Capabilities Excellence:
+- Object Tables are revolutionary! The ability to create a SQL interface over unstructured Cloud Storage files is incredibly powerful
+- ObjectRef data type is a game-changer for referencing unstructured data in ML models
+- BigFrames Multimodal DataFrame makes it natural to work with mixed data types in Python
+- The seamless integration between structured and unstructured data processing is exactly what real-world applications need
+
+BigQuery ML Integration:
+- ML.PREDICT and ML.DETECT_ANOMALIES work flawlessly with custom models
+- The ability to call ML models directly in SQL is incredibly convenient
+- Training models directly in BigQuery saves significant infrastructure complexity
+- Real-time inference capabilities are impressive for production use cases
+
+Documentation and Samples:
+- The sample Colab notebooks (goo.gle/bq-multimodal-sample, goo.gle/bqdf-multimodal-sample) were excellent starting points
+- Documentation for multimodal data analysis is comprehensive and well-structured
+- The "Practical Guide to Multimodal Data Analytics" blog was particularly helpful
+- Code examples were clear and directly applicable to real projects
+
+Developer Experience:
+- BigFrames Python API feels natural and intuitive
+- Integration with existing Google Cloud services (Vision API, Document AI) is seamless
+- Performance is excellent - sub-5-minute processing for complex multimodal workflows
+- Error messages are generally clear and actionable
+
+=== AREAS FOR IMPROVEMENT ===
+
+Setup and Configuration:
+- Initial setup of Object Tables requires careful attention to connection configuration
+- Service account permissions for multimodal features could be more clearly documented
+- Some BigQuery AI features have subtle syntax requirements that could be better explained
+
+Error Handling:
+- When Object Tables point to non-existent Cloud Storage paths, error messages could be more specific
+- BigFrames sometimes produces cryptic error messages for schema mismatches
+- ML model failures don't always provide clear guidance on data format issues
+
+Performance Considerations:
+- Large multimodal datasets can have unpredictable query performance
+- Some operations require careful optimization to avoid timeouts
+- Memory usage patterns for BigFrames multimodal operations could be better documented
+
+Feature Completeness:
+- Would love to see more pre-built ML models for common multimodal use cases
+- Integration with more document types beyond standard formats would be valuable
+- More advanced image analysis capabilities directly in BigQuery would be amazing
+
+=== SPECIFIC TECHNICAL FEEDBACK ===
+
+Object Tables:
+- Excellent concept and implementation
+- Suggestion: Support for more metadata extraction options
+- Would benefit from built-in versioning for referenced files
+
+ObjectRef:
+- Perfect for our use case of referencing images and documents in ML workflows
+- Suggestion: More examples of complex ObjectRef usage patterns
+- Integration with BigFrames could be even more seamless
+
+BigFrames Multimodal:
+- Powerful and intuitive API
+- Suggestion: Better memory management for large datasets
+- More built-in transformation functions for multimodal data would be helpful
+
+=== OVERALL ASSESSMENT ===
+
+BigQuery AI's multimodal capabilities are genuinely revolutionary for real-world business applications. The combination of Object Tables, ObjectRef, and BigFrames creates a powerful platform for building production-grade AI applications that truly break down the barriers between structured and unstructured data.
+
+The technology enabled us to build a complete insurance processing system that would have been extremely complex with traditional approaches. The fact that we can process customer data, vehicle images, and insurance documents in a unified workflow using SQL and Python is remarkable.
+
+The hackathon experience pushed us to explore the full depth of BigQuery AI capabilities, and we're impressed by both the technical sophistication and practical applicability of the platform.
+
+Rating: 9/10 - Excellent technology with minor areas for improvement
+
+=== SUGGESTIONS FOR FUTURE DEVELOPMENT ===
+
+1. More industry-specific templates and examples
+2. Enhanced debugging tools for multimodal workflows  
+3. Better integration with popular ML frameworks
+4. More comprehensive cost optimization guidance
+5. Advanced analytics dashboards for multimodal data insights
+
+=== CONCLUSION ===
+
+BigQuery AI's multimodal features represent the future of data analytics and ML. The hackathon experience demonstrated that these tools are ready for production use and can solve real-world business problems with significant impact. We're excited to continue building on this platform and exploring new possibilities for AI-powered business automation.
+
+Thank you for creating such powerful and accessible AI tools!
+
+---
+End of Survey

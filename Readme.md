@@ -1,12 +1,20 @@
 # BigQuery AI Hackathon: Intelligent Insurance Engine 🏆
 
-## Multimodal Pioneer Track 🖼️
+## State-of-the-Art Agent System with Communication Protocol 🤖
 
 ### 🎯 Project Overview
 
-**Challenge Track**: The Multimodal Pioneer  
-**Project**: Intelligent Insurance Processing Engine with Premium Pricing Agent  
-**Goal**: Build a multimodal AI agent that processes insurance data (structured + unstructured) and provides automated premium pricing with ML model integration
+**Challenge Track**: The Multimodal Pioneer 🖼️  
+**Innovation**: Revolutionary Agent Architecture + Complete BigQuery AI Integration  
+**Goal**: Intelligent agent system that processes multimodal insurance data with advanced workflow orchestration, real-time communication protocol, and state-of-the-art architecture
+
+### 🚀 Revolutionary Features
+
+- **🗣️ Novel Communication Protocol**: Advanced message routing and agent coordination
+- **🤖 State-of-the-Art Agent Architecture**: Intelligent workflow orchestration with real-time processing
+- **📊 Complete BigQuery AI Integration**: Object Tables, ObjectRef, BigFrames, ML models
+- **🖼️ Multimodal Data Processing**: Vision API, Document AI, structured data fusion
+- **⚡ Real-time Agent Experience**: Live processing logs and status updates
 
 ---
 
@@ -33,10 +41,51 @@
 
 ## 🚀 Quick Start
 
+### Option 1: Streamlit Web Interface (Recommended)
+
+1. **Launch the AI Agent Web App**:
+   ```bash
+   # Windows - Double-click or run:
+   run_streamlit_app.bat
+   
+   # Or manually:
+   venv\Scripts\activate
+   streamlit run web_interface\insurance_app.py
+   ```
+
+2. **Experience the Agent**:
+   - Fill out personal information
+   - Upload vehicle photos and documents  
+   - Watch the AI agent process in real-time
+   - Get instant premium calculations with live logs
+
+### Option 2: Jupyter Notebook Demo
+
+1. **Launch Jupyter**:
+   ```bash
+   venv\Scripts\activate
+   jupyter notebook notebooks/01_intelligent_insurance_engine_demo.ipynb
+   ```
+
+2. **Run the Demo**:
+   - Execute cells to see agent initialization
+   - Experience real-time processing with console output
+   - Watch intelligent workflow orchestration
+
+### Option 3: Direct Agent Testing
+
+1. **Test the Agent System**:
+   ```bash
+   venv\Scripts\activate
+   python test_agent_system.py
+   ```
+
+## 🛠️ Installation & Setup
+
 ### Prerequisites
 - Google Cloud Project with BigQuery API enabled
 - Python 3.8+
-- Required Python packages (see `requirements.txt`)
+- Virtual environment (recommended)
 
 ### Installation
 
@@ -46,8 +95,15 @@
    cd intelligent-insurance-engine
    ```
 
-2. **Install dependencies**
+2. **Setup Environment**
    ```bash
+   # Create virtual environment
+   python -m venv venv
+   
+   # Activate (Windows)
+   venv\Scripts\activate
+   
+   # Install dependencies
    pip install -r requirements.txt
    ```
 

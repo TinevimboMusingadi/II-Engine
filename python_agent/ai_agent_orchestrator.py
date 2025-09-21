@@ -275,7 +275,7 @@ class InsuranceAIAgent:
         - Fraud Probability: {risk_assessment.get('fraud_probability', 'N/A')}
 
         PREMIUM CALCULATION:
-        - Annual Premium: ${risk_assessment.get('premium_amount', 'N/A')".2f"}
+        - Annual Premium: ${risk_assessment.get('premium_amount', 'N/A'):.2f}
 
         RECOMMENDATIONS:
         {chr(10).join('- ' + rec for rec in risk_assessment.get('recommendations', []))}
@@ -391,7 +391,7 @@ class InsuranceAIAgent:
         print(f"Reasons: {', '.join(review_reasons)}")
         print(f"Risk Score: {risk_assessment['final_risk_score']}")
         print(f"Fraud Probability: {risk_assessment['fraud_probability']}")
-        print(f"Premium Amount: ${risk_assessment['premium_amount']".2f"}")
+        print(f"Premium Amount: ${risk_assessment['premium_amount']:.2f}")
         print("-" * 50)
 
     def batch_process_applications(self, status_filter: str = "PENDING") -> List[Dict[str, Any]]:
