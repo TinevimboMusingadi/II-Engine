@@ -1,0 +1,194 @@
+Collecting bigframes
+  Downloading bigframes-2.21.0-py2.py3-none-any.whl (1.4 MB)
+     ---------------------------------------- 1.4/1.4 MB 1.1 MB/s eta 0:00:00
+Collecting tabulate>=0.9
+  Downloading tabulate-0.9.0-py3-none-any.whl (35 kB)
+Requirement already satisfied: google-auth<3.0,>=2.15.0 in c:\users\pc\ii-engine\venv\lib\site-packages (from bigframes) (2.40.3)
+Requirement already satisfied: python-dateutil<3,>=2.8.2 in c:\users\pc\ii-engine\venv\lib\site-packages (from bigframes) (2.9.0.post0)
+Requirement already satisfied: google-cloud-bigquery[bqstorage,pandas]>=3.31.0 in c:\users\pc\ii-engine\venv\lib\site-packages (from bigframes) (3.38.0)
+Collecting toolz<2,>=0.11
+  Downloading toolz-1.0.0-py3-none-any.whl (56 kB)
+     ---------------------------------------- 56.4/56.4 KB 2.9 MB/s eta 0:00:00
+Collecting db-dtypes>=1.4.2
+  Downloading db_dtypes-1.4.3-py3-none-any.whl (18 kB)
+Collecting google-cloud-functions>=1.12.0
+  Downloading google_cloud_functions-1.20.4-py3-none-any.whl (154 kB)
+     -------------------------------------- 154.6/154.6 KB 1.9 MB/s eta 0:00:00
+Collecting cloudpickle>=2.0.0
+  Downloading cloudpickle-3.1.1-py3-none-any.whl (20 kB)
+Requirement already satisfied: pytz>=2022.7 in c:\users\pc\ii-engine\venv\lib\site-packages (from bigframes) (2025.2)
+Collecting fsspec>=2023.3.0
+  Downloading fsspec-2025.9.0-py3-none-any.whl (199 kB)
+     -------------------------------------- 199.3/199.3 KB 1.7 MB/s eta 0:00:00
+Collecting geopandas>=0.12.2
+  Downloading geopandas-1.1.1-py3-none-any.whl (338 kB)
+     -------------------------------------- 338.4/338.4 KB 2.6 MB/s eta 0:00:00
+Requirement already satisfied: numpy>=1.24.0 in c:\users\pc\ii-engine\venv\lib\site-packages (from bigframes) (2.2.6)
+Requirement already satisfied: requests>=2.27.1 in c:\users\pc\ii-engine\venv\lib\site-packages (from bigframes) (2.32.5)
+Collecting pyarrow>=15.0.2
+  Downloading pyarrow-21.0.0-cp310-cp310-win_amd64.whl (26.2 MB)
+     ---------------------------------------- 26.2/26.2 MB 3.0 MB/s eta 0:00:00
+Collecting google-cloud-bigquery-connection>=1.12.0
+  Downloading google_cloud_bigquery_connection-1.18.3-py3-none-any.whl (68 kB)
+     ---------------------------------------- 68.0/68.0 KB 3.9 MB/s eta 0:00:00
+Collecting google-cloud-bigquery-storage<3.0.0,>=2.30.0
+  Downloading google_cloud_bigquery_storage-2.33.1-py3-none-any.whl (293 kB)
+     -------------------------------------- 293.6/293.6 KB 4.5 MB/s eta 0:00:00
+Collecting shapely>=1.8.5
+  Downloading shapely-2.1.1-cp310-cp310-win_amd64.whl (1.7 MB)
+     ---------------------------------------- 1.7/1.7 MB 4.0 MB/s eta 0:00:00
+Collecting humanize>=4.6.0
+  Downloading humanize-4.13.0-py3-none-any.whl (128 kB)
+     -------------------------------------- 128.9/128.9 KB 3.8 MB/s eta 0:00:00
+Collecting sqlglot>=23.6.3
+  Downloading sqlglot-27.16.3-py3-none-any.whl (518 kB)
+     -------------------------------------- 518.0/518.0 KB 4.7 MB/s eta 0:00:00
+Collecting pandas-gbq>=0.26.1
+  Downloading pandas_gbq-0.29.2-py3-none-any.whl (40 kB)
+     ---------------------------------------- 41.0/41.0 KB 2.0 MB/s eta 0:00:00
+Collecting google-cloud-resource-manager>=1.10.3
+  Downloading google_cloud_resource_manager-1.14.2-py3-none-any.whl (394 kB)
+     -------------------------------------- 394.3/394.3 KB 3.5 MB/s eta 0:00:00
+Collecting atpublic<6,>=2.3
+  Downloading atpublic-5.1-py3-none-any.whl (5.2 kB)
+Collecting ipywidgets>=7.7.1
+  Downloading ipywidgets-8.1.7-py3-none-any.whl (139 kB)
+     -------------------------------------- 139.8/139.8 KB 2.8 MB/s eta 0:00:00
+Collecting matplotlib>=3.7.1
+  Downloading matplotlib-3.10.6-cp310-cp310-win_amd64.whl (8.1 MB)
+     ---------------------------------------- 8.1/8.1 MB 3.8 MB/s eta 0:00:00
+Collecting gcsfs!=2025.5.0,>=2023.3.0
+  Downloading gcsfs-2025.9.0-py2.py3-none-any.whl (36 kB)
+Collecting grpc-google-iam-v1>=0.14.2
+  Downloading grpc_google_iam_v1-0.14.2-py3-none-any.whl (19 kB)
+Requirement already satisfied: pandas>=1.5.3 in c:\users\pc\ii-engine\venv\lib\site-packages (from bigframes) (2.3.2)
+Requirement already satisfied: google-cloud-storage>=2.0.0 in c:\users\pc\ii-engine\venv\lib\site-packages (from bigframes) (3.4.0)
+Requirement already satisfied: typing-extensions<5,>=4.5.0 in c:\users\pc\ii-engine\venv\lib\site-packages (from bigframes) (4.15.0)
+Collecting rich<14,>=12.4.4
+  Downloading rich-13.9.4-py3-none-any.whl (242 kB)
+     -------------------------------------- 242.4/242.4 KB 3.7 MB/s eta 0:00:00
+Collecting pydata-google-auth>=1.8.2
+  Downloading pydata_google_auth-1.9.1-py2.py3-none-any.whl (15 kB)
+Requirement already satisfied: packaging>=24.2.0 in c:\users\pc\ii-engine\venv\lib\site-packages (from db-dtypes>=1.4.2->bigframes) (25.0)
+Collecting decorator>4.1.2
+  Downloading decorator-5.2.1-py3-none-any.whl (9.2 kB)
+Collecting aiohttp!=4.0.0a0,!=4.0.0a1
+  Downloading aiohttp-3.12.15-cp310-cp310-win_amd64.whl (452 kB)
+     -------------------------------------- 452.3/452.3 KB 4.7 MB/s eta 0:00:00
+Collecting google-auth-oauthlib
+  Downloading google_auth_oauthlib-1.2.2-py3-none-any.whl (19 kB)
+Collecting pyproj>=3.5.0
+  Downloading pyproj-3.7.1-cp310-cp310-win_amd64.whl (6.3 MB)
+     ---------------------------------------- 6.3/6.3 MB 2.8 MB/s eta 0:00:00
+Collecting pyogrio>=0.7.2
+  Downloading pyogrio-0.11.1-cp310-cp310-win_amd64.whl (19.2 MB)
+     ---------------------------------------- 19.2/19.2 MB 2.7 MB/s eta 0:00:00
+Requirement already satisfied: cachetools<6.0,>=2.0.0 in c:\users\pc\ii-engine\venv\lib\site-packages (from google-auth<3.0,>=2.15.0->bigframes) (5.5.2)
+Requirement already satisfied: rsa<5,>=3.1.4 in c:\users\pc\ii-engine\venv\lib\site-packages (from google-auth<3.0,>=2.15.0->bigframes) (4.9.1)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in c:\users\pc\ii-engine\venv\lib\site-packages (from google-auth<3.0,>=2.15.0->bigframes) (0.4.2)
+Requirement already satisfied: google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0,>=1.34.1 in c:\users\pc\ii-engine\venv\lib\site-packages (from google-cloud-bigquery-connection>=1.12.0->bigframes) (2.25.1)
+Requirement already satisfied: protobuf!=4.21.0,!=4.21.1,!=4.21.2,!=4.21.3,!=4.21.4,!=4.21.5,<7.0.0,>=3.20.2 in c:\users\pc\ii-engine\venv\lib\site-packages (from google-cloud-bigquery-connection>=1.12.0->bigframes) (6.32.1)
+Requirement already satisfied: proto-plus<2.0.0,>=1.22.3 in c:\users\pc\ii-engine\venv\lib\site-packages (from google-cloud-bigquery-connection>=1.12.0->bigframes) (1.26.1)
+Requirement already satisfied: google-cloud-core<3.0.0,>=2.4.1 in c:\users\pc\ii-engine\venv\lib\site-packages (from google-cloud-bigquery[bqstorage,pandas]>=3.31.0->bigframes) (2.4.3)
+Requirement already satisfied: google-resumable-media<3.0.0,>=2.0.0 in c:\users\pc\ii-engine\venv\lib\site-packages (from google-cloud-bigquery[bqstorage,pandas]>=3.31.0->bigframes) (2.7.2)
+Requirement already satisfied: grpcio<2.0.0,>=1.47.0 in c:\users\pc\ii-engine\venv\lib\site-packages (from google-cloud-bigquery[bqstorage,pandas]>=3.31.0->bigframes) (1.75.0)
+Requirement already satisfied: google-crc32c<2.0.0,>=1.1.3 in c:\users\pc\ii-engine\venv\lib\site-packages (from google-cloud-storage>=2.0.0->bigframes) (1.7.1)
+Requirement already satisfied: googleapis-common-protos[grpc]<2.0.0,>=1.56.0 in c:\users\pc\ii-engine\venv\lib\site-packages (from grpc-google-iam-v1>=0.14.2->bigframes) (1.70.0)
+Collecting jupyterlab_widgets~=3.0.15
+  Downloading jupyterlab_widgets-3.0.15-py3-none-any.whl (216 kB)
+     -------------------------------------- 216.6/216.6 KB 2.6 MB/s eta 0:00:00
+Collecting widgetsnbextension~=4.0.14
+  Downloading widgetsnbextension-4.0.14-py3-none-any.whl (2.2 MB)
+     ---------------------------------------- 2.2/2.2 MB 3.7 MB/s eta 0:00:00
+Collecting comm>=0.1.3
+  Downloading comm-0.2.3-py3-none-any.whl (7.3 kB)
+Collecting traitlets>=4.3.1
+  Downloading traitlets-5.14.3-py3-none-any.whl (85 kB)
+     ---------------------------------------- 85.4/85.4 KB 4.7 MB/s eta 0:00:00
+Collecting ipython>=6.1.0
+  Downloading ipython-8.37.0-py3-none-any.whl (831 kB)
+     -------------------------------------- 831.9/831.9 KB 3.5 MB/s eta 0:00:00
+Collecting pillow>=8
+  Using cached pillow-11.3.0-cp310-cp310-win_amd64.whl (7.0 MB)
+Collecting pyparsing>=2.3.1
+  Downloading pyparsing-3.2.4-py3-none-any.whl (113 kB)
+     -------------------------------------- 113.9/113.9 KB 3.3 MB/s eta 0:00:00
+Collecting cycler>=0.10
+  Downloading cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Collecting contourpy>=1.0.1
+  Downloading contourpy-1.3.2-cp310-cp310-win_amd64.whl (221 kB)
+     -------------------------------------- 221.2/221.2 KB 2.7 MB/s eta 0:00:00
+Collecting kiwisolver>=1.3.1
+  Downloading kiwisolver-1.4.9-cp310-cp310-win_amd64.whl (73 kB)
+     ---------------------------------------- 73.7/73.7 KB 2.0 MB/s eta 0:00:00
+Collecting fonttools>=4.22.0
+  Downloading fonttools-4.60.0-cp310-cp310-win_amd64.whl (2.3 MB)
+     ---------------------------------------- 2.3/2.3 MB 3.1 MB/s eta 0:00:00
+Requirement already satisfied: tzdata>=2022.7 in c:\users\pc\ii-engine\venv\lib\site-packages (from pandas>=1.5.3->bigframes) (2025.2)
+Requirement already satisfied: setuptools in c:\users\pc\ii-engine\venv\lib\site-packages (from pandas-gbq>=0.26.1->bigframes) (58.1.0)
+Requirement already satisfied: six>=1.5 in c:\users\pc\ii-engine\venv\lib\site-packages (from python-dateutil<3,>=2.8.2->bigframes) (1.17.0)
+Requirement already satisfied: certifi>=2017.4.17 in c:\users\pc\ii-engine\venv\lib\site-packages (from requests>=2.27.1->bigframes) (2025.8.3)
+Requirement already satisfied: urllib3<3,>=1.21.1 in c:\users\pc\ii-engine\venv\lib\site-packages (from requests>=2.27.1->bigframes) (2.5.0)
+Requirement already satisfied: idna<4,>=2.5 in c:\users\pc\ii-engine\venv\lib\site-packages (from requests>=2.27.1->bigframes) (3.10)
+Requirement already satisfied: charset_normalizer<4,>=2 in c:\users\pc\ii-engine\venv\lib\site-packages (from requests>=2.27.1->bigframes) (3.4.3)
+Collecting pygments<3.0.0,>=2.13.0
+  Using cached pygments-2.19.2-py3-none-any.whl (1.2 MB)
+Collecting markdown-it-py>=2.2.0
+  Downloading markdown_it_py-4.0.0-py3-none-any.whl (87 kB)
+     ---------------------------------------- 87.3/87.3 KB 5.1 MB/s eta 0:00:00
+Collecting multidict<7.0,>=4.5
+  Downloading multidict-6.6.4-cp310-cp310-win_amd64.whl (46 kB)
+     ---------------------------------------- 46.0/46.0 KB 2.2 MB/s eta 0:00:00
+Collecting attrs>=17.3.0
+  Downloading attrs-25.3.0-py3-none-any.whl (63 kB)
+     ---------------------------------------- 63.8/63.8 KB 3.3 MB/s eta 0:00:00
+Collecting aiosignal>=1.4.0
+  Downloading aiosignal-1.4.0-py3-none-any.whl (7.5 kB)
+Collecting async-timeout<6.0,>=4.0
+  Downloading async_timeout-5.0.1-py3-none-any.whl (6.2 kB)
+Collecting propcache>=0.2.0
+  Downloading propcache-0.3.2-cp310-cp310-win_amd64.whl (41 kB)
+     ---------------------------------------- 41.5/41.5 KB 2.0 MB/s eta 0:00:00
+Collecting aiohappyeyeballs>=2.5.0
+  Downloading aiohappyeyeballs-2.6.1-py3-none-any.whl (15 kB)
+Collecting yarl<2.0,>=1.17.0
+  Downloading yarl-1.20.1-cp310-cp310-win_amd64.whl (86 kB)
+     ---------------------------------------- 86.8/86.8 KB 2.4 MB/s eta 0:00:00
+Collecting frozenlist>=1.1.1
+  Downloading frozenlist-1.7.0-cp310-cp310-win_amd64.whl (43 kB)
+     ---------------------------------------- 43.8/43.8 KB 1.1 MB/s eta 0:00:00
+Requirement already satisfied: grpcio-status<2.0.0,>=1.33.2 in c:\users\pc\ii-engine\venv\lib\site-packages (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0,>=1.34.1->google-cloud-bigquery-connection>=1.12.0->bigframes) (1.75.0)
+Collecting requests-oauthlib>=0.7.0
+  Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)
+Collecting matplotlib-inline
+  Downloading matplotlib_inline-0.1.7-py3-none-any.whl (9.9 kB)
+Collecting stack_data
+  Downloading stack_data-0.6.3-py3-none-any.whl (24 kB)
+Collecting jedi>=0.16
+  Downloading jedi-0.19.2-py2.py3-none-any.whl (1.6 MB)
+     ---------------------------------------- 1.6/1.6 MB 2.9 MB/s eta 0:00:00
+Collecting exceptiongroup
+  Using cached exceptiongroup-1.3.0-py3-none-any.whl (16 kB)
+Collecting colorama
+  Using cached colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+Collecting prompt_toolkit<3.1.0,>=3.0.41
+  Downloading prompt_toolkit-3.0.52-py3-none-any.whl (391 kB)
+     ------------------------------------ 391.4/391.4 KB 716.5 kB/s eta 0:00:00
+Collecting mdurl~=0.1
+  Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Requirement already satisfied: pyasn1<0.7.0,>=0.6.1 in c:\users\pc\ii-engine\venv\lib\site-packages (from pyasn1-modules>=0.2.1->google-auth<3.0,>=2.15.0->bigframes) (0.6.1)
+Collecting parso<0.9.0,>=0.8.4
+  Downloading parso-0.8.5-py2.py3-none-any.whl (106 kB)
+     ------------------------------------ 106.7/106.7 KB 614.2 kB/s eta 0:00:00
+Collecting wcwidth
+  Downloading wcwidth-0.2.13-py2.py3-none-any.whl (34 kB)
+Collecting oauthlib>=3.0.0
+  Downloading oauthlib-3.3.1-py3-none-any.whl (160 kB)
+     -------------------------------------- 160.1/160.1 KB 1.4 MB/s eta 0:00:00
+Collecting asttokens>=2.1.0
+  Downloading asttokens-3.0.0-py3-none-any.whl (26 kB)
+Collecting pure-eval
+  Downloading pure_eval-0.2.3-py3-none-any.whl (11 kB)
+Collecting executing>=1.2.0
+  Downloading executing-2.2.1-py2.py3-none-any.whl (28 kB)
+Installing collected packages: wcwidth, pure-eval, widgetsnbextension, traitlets, toolz, tabulate, sqlglot, shapely, pyproj, pyparsing, pyogrio, pygments, pyarrow, propcache, prompt_toolkit, pillow, parso, oauthlib, multidict, mdurl, kiwisolver, jupyterlab_widgets, humanize, fsspec, frozenlist, fonttools, executing, exceptiongroup, decorator, cycler, contourpy, comm, colorama, cloudpickle, attrs, atpublic, async-timeout, asttokens, aiohappyeyeballs, yarl, stack_data, requests-oauthlib, matplotlib-inline, matplotlib, markdown-it-py, jedi, aiosignal, rich, ipython, grpc-google-iam-v1, google-auth-oauthlib, geopandas, db-dtypes, aiohttp, pydata-google-auth, ipywidgets, google-cloud-resource-manager, google-cloud-functions, google-cloud-bigquery-storage, google-cloud-bigquery-connection, pandas-gbq, gcsfs, bigframes
