@@ -15,6 +15,15 @@ import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
+# Import Gemini for enhanced AI processing
+try:
+    import google.generativeai as genai
+    from google.generativeai.types import HarmCategory, HarmBlockThreshold
+    GEMINI_AVAILABLE = True
+except ImportError:
+    GEMINI_AVAILABLE = False
+    print("⚠️ Gemini API not available for enhanced AI processing")
+
 # Import existing BigQuery AI components (with fallback for deployment)
 try:
     from python_agent.bigframes_multimodal import BigFramesMultimodalProcessor
@@ -112,6 +121,18 @@ class BigQueryAIToolImplementations:
         self.multimodal_processor = BigFramesMultimodalProcessor(project_id, dataset_id)
         self.ml_tools = InsuranceMLTools(project_id, dataset_id)
         self.uploader = InsuranceApplicationUploader(project_id)
+        
+        # Initialize Gemini for enhanced AI processing
+        self.gemini_enabled = False
+        if GEMINI_AVAILABLE:
+            try:
+                genai.configure(api_key=os.getenv('GOOGLE_API_KEY'))
+                self.gemini_model = genai.GenerativeModel('gemini-2.0-flash-exp')
+                self.gemini_enabled = True
+                log.info("🧠 Gemini 2.5 Flash Lite initialized for enhanced AI processing")
+            except Exception as e:
+                log.warning(f"⚠️ Failed to initialize Gemini: {e}")
+                self.gemini_enabled = False
         
         log.info(f"🔧 BigQuery AI Tools initialized for project: {project_id}")
         
@@ -413,8 +434,17 @@ class BigQueryAIToolImplementations:
                 """
             }
             
-            # Combine all sections
-            final_report = "\n\n".join(report_sections.values())
+            # Use Gemini to enhance the report if available
+            if self.gemini_enabled:
+                try:
+                    enhanced_report = await self._enhance_report_with_gemini(report_sections, risk_assessment, customer_data, vehicle_data)
+                    final_report = enhanced_report
+                    log.info("🧠 Report enhanced with Gemini 2.5 Flash Lite")
+                except Exception as e:
+                    log.warning(f"⚠️ Failed to enhance report with Gemini: {e}")
+                    final_report = "\n\n".join(report_sections.values())
+            else:
+                final_report = "\n\n".join(report_sections.values())
             
             # Add processing metadata
             final_report += f"""
@@ -428,6 +458,7 @@ class BigQueryAIToolImplementations:
             - Vision API image analysis: ✓
             - Document AI text extraction: ✓
             - Automated risk assessment: ✓
+            - Gemini 2.5 Flash Lite enhancement: {'✓' if self.gemini_enabled else '✗'}
             
             Generated on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S UTC')}
             """
@@ -609,6 +640,58 @@ class BigQueryAIToolImplementations:
             log.info(f"✅ Created customer profile for: {customer_id}")
         except Exception as e:
             log.warning(f"⚠️ Could not create customer profile: {e}")
+    
+    async def _enhance_report_with_gemini(self, report_sections: Dict[str, str], 
+                                        risk_assessment: Dict[str, Any], 
+                                        customer_data: Dict[str, Any], 
+                                        vehicle_data: Dict[str, Any]) -> str:
+        """Use Gemini 2.5 Flash Lite to enhance the insurance report."""
+        try:
+            # Create prompt for Gemini
+            prompt = f"""
+You are an expert insurance underwriter with access to advanced AI tools. Enhance this insurance application report to be more professional, comprehensive, and insightful.
+
+CUSTOMER DATA:
+{json.dumps(customer_data, indent=2)}
+
+VEHICLE DATA:
+{json.dumps(vehicle_data, indent=2)}
+
+RISK ASSESSMENT:
+{json.dumps(risk_assessment, indent=2)}
+
+CURRENT REPORT SECTIONS:
+{json.dumps(report_sections, indent=2)}
+
+INSTRUCTIONS:
+1. Enhance the executive summary with key insights and recommendations
+2. Add professional analysis and commentary to each section
+3. Include specific risk factors and mitigation strategies
+4. Provide clear, actionable recommendations
+5. Use professional insurance industry terminology
+6. Maintain the same structure but enhance content quality
+7. Add any missing critical information
+
+Return the enhanced report as a single, well-formatted document.
+"""
+            
+            # Call Gemini
+            response = self.gemini_model.generate_content(
+                prompt,
+                generation_config=genai.types.GenerationConfig(
+                    temperature=0.3,
+                    max_output_tokens=4000,
+                    top_p=0.8,
+                    top_k=40
+                )
+            )
+            
+            return response.text
+            
+        except Exception as e:
+            log.error(f"❌ Error enhancing report with Gemini: {e}")
+            # Return original report if enhancement fails
+            return "\n\n".join(report_sections.values())
 
 def get_insurance_tool_descriptions() -> List[Dict[str, Any]]:
     """

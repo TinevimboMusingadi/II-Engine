@@ -126,11 +126,12 @@ class ApplicationState:
 
 class IntelligentLLMRouter:
     """
-    Intelligent router that uses LLM reasoning to select the next tool.
-    Optimized for BigQuery AI insurance processing workflow.
+    Intelligent router that uses Gemini 2.5 Flash Lite for tool selection.
+    State-of-the-art LLM-powered decision making for BigQuery AI workflows.
     """
     
-    def __init__(self):
+    def __init__(self, project_id: str = "intelligent-insurance-engine"):
+        self.project_id = project_id
         self.workflow_knowledge = {
             "start_sequence": ["analyze_customer_data"],
             "data_collection": ["analyze_vehicle_images", "extract_document_data"],
@@ -139,16 +140,63 @@ class IntelligentLLMRouter:
             "completion_phase": ["store_application_results", "flag_for_human_review", "finish_processing"]
         }
         
+        # Initialize Gemini if available
+        if GEMINI_AVAILABLE:
+            try:
+                # Configure Gemini
+                genai.configure(api_key=os.getenv('GOOGLE_API_KEY'))
+                self.model = genai.GenerativeModel('gemini-2.0-flash-exp')
+                self.llm_enabled = True
+                log.info("🧠 Gemini 2.5 Flash Lite initialized for intelligent routing")
+            except Exception as e:
+                log.warning(f"⚠️ Failed to initialize Gemini: {e}")
+                self.llm_enabled = False
+        else:
+            self.llm_enabled = False
+            log.warning("⚠️ Gemini not available, using fallback router")
+        
     async def decide_next_action(self, state: ApplicationState) -> Dict[str, Any]:
         """
-        Decide the next action using intelligent workflow logic.
-        In production, this would call an LLM with the full context.
+        Decide the next action using Gemini 2.5 Flash Lite for intelligent reasoning.
+        Uses LLM to analyze context and select optimal next tool.
         """
         
         # Safety check
         if not state.should_continue_processing():
             return {"action": "finish_processing", "params": self._get_finish_params(state)}
+        
+        # Use Gemini if available, otherwise fallback to rule-based
+        if self.llm_enabled:
+            return await self._llm_decide_next_action(state)
+        else:
+            return await self._rule_based_decide_next_action(state)
+    
+    async def _llm_decide_next_action(self, state: ApplicationState) -> Dict[str, Any]:
+        """Use Gemini 2.5 Flash Lite to intelligently decide next action."""
+        try:
+            # Get available tools
+            from .tools import get_insurance_tool_descriptions
+            tools = get_insurance_tool_descriptions()
             
+            # Create comprehensive prompt for Gemini
+            prompt = self._create_gemini_prompt(state, tools)
+            
+            # Call Gemini
+            response = await self._call_gemini(prompt)
+            
+            # Parse response
+            decision = self._parse_gemini_response(response, state)
+            
+            log.info(f"🧠 Gemini selected: {decision['action']} - {decision.get('reasoning', '')}")
+            return decision
+            
+        except Exception as e:
+            log.error(f"❌ Error in LLM decision making: {e}")
+            # Fallback to rule-based
+            return await self._rule_based_decide_next_action(state)
+    
+    async def _rule_based_decide_next_action(self, state: ApplicationState) -> Dict[str, Any]:
+        """Fallback rule-based decision making."""
         # Workflow logic based on current state
         if not state.state_flags["customer_analyzed"]:
             return self._decide_customer_analysis(state)
@@ -305,6 +353,134 @@ class IntelligentLLMRouter:
             "risk_score": risk_assessment.get("final_risk_score", 0),
             "application_id": state.application_id
         }
+    
+    def _create_gemini_prompt(self, state: ApplicationState, tools: List[Dict[str, Any]]) -> str:
+        """Create comprehensive prompt for Gemini decision making."""
+        
+        # Get current state summary
+        state_summary = state.get_current_state_summary()
+        
+        # Format available tools
+        tools_description = "\n".join([
+            f"- {tool['name']}: {tool['description']}"
+            for tool in tools
+        ])
+        
+        # Get current context data
+        context_data = {
+            "customer_data": state.context.get("analyze_customer_data", {}),
+            "vehicle_data": state.context.get("analyze_vehicle_images", {}),
+            "document_data": state.context.get("extract_document_data", {}),
+            "risk_assessment": state.context.get("run_comprehensive_risk_assessment", {}),
+            "final_report": state.context.get("generate_final_report", {})
+        }
+        
+        prompt = f"""
+You are an expert insurance processing AI agent powered by BigQuery AI. Your task is to intelligently select the next tool to execute in an insurance application processing workflow.
+
+CURRENT APPLICATION STATE:
+{state_summary}
+
+CURRENT CONTEXT DATA:
+{json.dumps(context_data, indent=2)}
+
+AVAILABLE TOOLS:
+{tools_description}
+
+WORKFLOW RULES:
+1. Always start with 'analyze_customer_data' if customer hasn't been analyzed
+2. Process vehicle images and documents in parallel when possible
+3. Run risk assessment only after collecting customer, vehicle, and document data
+4. Generate final report after risk assessment is complete
+5. Store results and check for human review before finishing
+6. Consider data quality and completeness when making decisions
+
+INSTRUCTIONS:
+Analyze the current state and context to determine the most appropriate next action. Consider:
+- What data is missing or incomplete?
+- What's the logical next step in the insurance processing workflow?
+- Are there any errors or issues that need addressing?
+- What BigQuery AI features should be utilized next?
+
+Respond with a JSON object in this exact format:
+{{
+    "action": "tool_name",
+    "params": {{"param1": "value1", "param2": "value2"}},
+    "reasoning": "Detailed explanation of why this action was selected"
+}}
+
+Be specific about parameters and provide clear reasoning for your decision.
+"""
+        return prompt
+    
+    async def _call_gemini(self, prompt: str) -> str:
+        """Call Gemini 2.5 Flash Lite with the prompt."""
+        try:
+            # Configure safety settings for insurance processing
+            safety_settings = {
+                HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_NONE,
+                HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_NONE,
+                HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: HarmBlockThreshold.BLOCK_NONE,
+                HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_NONE,
+            }
+            
+            # Generate response
+            response = self.model.generate_content(
+                prompt,
+                safety_settings=safety_settings,
+                generation_config=genai.types.GenerationConfig(
+                    temperature=0.1,  # Low temperature for consistent decisions
+                    max_output_tokens=1000,
+                    top_p=0.8,
+                    top_k=40
+                )
+            )
+            
+            return response.text
+            
+        except Exception as e:
+            log.error(f"❌ Error calling Gemini: {e}")
+            raise
+    
+    def _parse_gemini_response(self, response: str, state: ApplicationState) -> Dict[str, Any]:
+        """Parse Gemini response and extract decision."""
+        try:
+            # Try to extract JSON from response
+            import re
+            json_match = re.search(r'\{.*\}', response, re.DOTALL)
+            if json_match:
+                decision = json.loads(json_match.group())
+            else:
+                # Fallback parsing
+                decision = {"action": "finish_processing", "params": {}, "reasoning": "Could not parse LLM response"}
+            
+            # Validate action exists
+            valid_actions = [
+                "analyze_customer_data", "analyze_vehicle_images", "extract_document_data",
+                "run_comprehensive_risk_assessment", "generate_final_report", 
+                "store_application_results", "flag_for_human_review", "finish_processing"
+            ]
+            
+            if decision.get("action") not in valid_actions:
+                log.warning(f"⚠️ Invalid action from LLM: {decision.get('action')}")
+                decision["action"] = "finish_processing"
+            
+            # Ensure required parameters are present
+            if not decision.get("params"):
+                decision["params"] = {}
+            
+            if not decision.get("reasoning"):
+                decision["reasoning"] = "LLM decision without explicit reasoning"
+            
+            return decision
+            
+        except Exception as e:
+            log.error(f"❌ Error parsing Gemini response: {e}")
+            return {
+                "action": "finish_processing",
+                "params": self._get_finish_params(state),
+                "reasoning": f"Error parsing LLM response: {e}"
+            }
 
 class SimplifiedRouter:
     """
@@ -460,8 +636,8 @@ class SimplifiedRouter:
         else:
             return {}
 
-# Use the simplified router for now
-LLMRouter = SimplifiedRouter
+# Use the intelligent LLM router by default, with fallback to simplified
+LLMRouter = IntelligentLLMRouter
 
 if __name__ == "__main__":
     # Test the router

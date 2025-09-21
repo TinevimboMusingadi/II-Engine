@@ -44,7 +44,7 @@ class InsuranceOrchestratorAgent:
         self.communication_protocol = communication_protocol or InMemoryCommunicationProtocol(project_id)
         
         # Initialize core components
-        self.router = LLMRouter()
+        self.router = LLMRouter(project_id)
         self.tools = BigQueryAIToolImplementations(project_id)
         
         # Track active applications

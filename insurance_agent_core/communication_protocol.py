@@ -18,13 +18,15 @@ logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
 class MessageType(str, Enum):
-    """Standardized message types for insurance processing."""
+    """Standardized message types for insurance processing with LLM integration."""
     START_APPLICATION_PROCESSING = "start_application_processing"
     APPLICATION_RESULT = "application_result"
     TOOL_EXECUTION_REQUEST = "tool_execution_request"
     TOOL_EXECUTION_RESPONSE = "tool_execution_response"
     HUMAN_REVIEW_REQUIRED = "human_review_required"
     STATUS_UPDATE = "status_update"
+    LLM_DECISION_REQUEST = "llm_decision_request"
+    LLM_DECISION_RESPONSE = "llm_decision_response"
     ERROR = "error"
 
 class Message(TypedDict):
