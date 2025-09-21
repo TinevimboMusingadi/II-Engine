@@ -4,7 +4,14 @@
 # Core Google Cloud libraries
 google-cloud-bigquery>=3.11.0
 google-cloud-storage>=2.10.0
+google-cloud-vision>=3.4.0
+google-cloud-documentai>=2.20.0
 bigframes>=0.10.0
+
+# Additional Google Cloud libraries for full functionality
+google-cloud-core>=2.4.0
+google-auth>=2.0.0
+google-auth-oauthlib>=1.0.0
 
 # Data processing and analysis
 pandas>=2.0.0
@@ -20,6 +27,7 @@ Pillow>=10.0.0
 # Additional utilities
 python-dotenv>=1.0.0
 requests>=2.31.0
+faker>=19.0.0
 
 # Development and testing
 pytest>=7.4.0
